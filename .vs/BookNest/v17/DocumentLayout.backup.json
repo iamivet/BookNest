@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|d:\\programming\\\u0434\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\booknest\\booknest\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|solutionrelative:booknest\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|d:\\programming\\\u0434\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\booknest\\booknest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|solutionrelative:booknest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|d:\\programming\\\u0434\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\booknest\\booknest\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19FFEAD1-807E-494B-9321-72FFC63FAC73}|BookNest\\BookNest.csproj|solutionrelative:booknest\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAAL4AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T08:05:04.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "BookNest\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T07:38:08.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Program.cs",
+              "RelativeDocumentMoniker": "BookNest\\Program.cs",
+              "ToolTip": "D:\\Programming\\\u0414\u0438\u043F\u043B\u043E\u043C\u0435\u043D\\BookNest\\BookNest\\Program.cs",
+              "RelativeToolTip": "BookNest\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T07:20:46.037Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
