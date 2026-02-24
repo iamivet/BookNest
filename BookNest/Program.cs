@@ -28,6 +28,9 @@ namespace BookNest
 
             app.PrepareDataBase().Wait();
 
+            builder.Services.AddControllers(
+                options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true 
+                );
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
