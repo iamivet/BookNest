@@ -22,15 +22,20 @@ namespace BookNest
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();   
+
+            builder.Services.AddRazorPages();
+
+            builder.Services.AddControllers(
+                options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true
+                );
 
             var app = builder.Build();
 
             app.PrepareDataBase().Wait();
 
-            builder.Services.AddControllers(
-                options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true 
-                );
+         
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
