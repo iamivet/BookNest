@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookNest.Data
 {
@@ -9,6 +10,8 @@ namespace BookNest.Data
         public int YearOfPublication { get; set; }
         public string BookSummary { get; set; } = null!;
         public string CoverImage { get; set; } = null!;
+
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Price {  get; set; }
         public int Quantity {  get; set; }
 
