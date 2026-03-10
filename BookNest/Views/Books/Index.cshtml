@@ -58,7 +58,7 @@
                 @Html.DisplayFor(modelItem => item.BookSummary)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoverImage)
+                    <img src="@item.CoverImage" alt="@item.Title" width="100px" height="145px" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
