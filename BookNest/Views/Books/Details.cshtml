@@ -3,76 +3,52 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/bookDetails.css" />
+<div class="page-container">
+    <a asp-action="Index" class="back-link">
+        <i class="bi bi-arrow-left"></i> ← Върни се към другите книги
+    </a>
+    <div class="container">
 
-<h1>Details</h1>
+        <div>
+            <img class="book-img" src="@Model.CoverImage" alt="@Model.Title" />
+        </div>
+        <div class="content">
+            <h1>@Model.Title</h1>
 
-<div>
-    <h4>Book</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.YearOfPublication)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.YearOfPublication)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookSummary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookSummary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CoverImage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoverImage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Publisher)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Publisher.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RegisterOn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RegisterOn)
-        </dd>
-    </dl>
+            <div class="order">
+                <span class="price">Наличност: @Model.Quantity</span>
+                <span class="price">@Model.Price €</span>
+
+            </div>
+            <button asp-controller="Carts" asp-action="Create" id="order">Добави в количка</button>
+            <p>
+                @Model.BookSummary
+            </p>
+            <table class="specs-table">
+                <tr>
+                    <th class="spec-label">Година на издаване</th>
+                    <td class="spec-value">@Model.YearOfPublication</td>
+                </tr>
+                <tr>
+                    <th class="spec-label">Каталожен номер</th>
+                    <td class="spec-value">@(Model.CatalogNumber ?? "---")</td>
+                </tr>
+                <tr>
+                    <th class="spec-label">Автор</th>
+                    <td class="spec-value">@Model.Author?.Name</td>
+                </tr>
+                <tr>
+                    <th class="spec-label">Издателство</th>
+                    <td class="spec-value">@Model.Publisher?.Name</td>
+                </tr>
+                <tr>
+                    <th class="spec-label">Категория</td>
+                    <td class="spec-value">@Model.Category?.Name</td>
+                </tr>
+            </table>
+        </div>
+      
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

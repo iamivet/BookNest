@@ -1,0 +1,140 @@
+﻿.container {
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+}
+
+.book-img {
+    width: 500px;
+    border-radius: 12px;
+    position: sticky;
+    top: 100px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    flex: 1;
+    gap: 18px;
+    font-family: 'Monotype Corsiva';
+    background: rgba(245, 243, 237, 0.85);
+    backdrop-filter: blur(100px);
+    border-radius: 15px;
+    border: 1px solid rgba(200, 185, 166, 0.6);
+    padding: 20px;
+}
+
+    .content h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        align-self: center;
+        color: #4A3A2A;
+    }
+
+
+.order span {
+    align-self: flex-end;
+    font-size: 20px;
+    color: #3A6EA5;
+}
+
+#order {
+    align-self: center;
+    height: 40px;
+    width: 300px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient( 135deg, #C65A3A, #E6D5BF);
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    background-size: 200% 200%;
+}
+
+    #order:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        background-position: right center;
+    }
+
+#input-gradient {
+    width: 100px;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #4A3A2A;
+    font-weight: bold;
+    transition: transform .2s, box-shadow .2s;
+    align-self: flex-start;
+    background-color: #FFF6E8;
+}
+
+.content p {
+    font-size: 25px;
+    color: #4A3A2A;
+}
+
+.order {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.accordion-header {
+    font-size: 25px;
+}
+
+.accordion-content span {
+    color: #3A6EA5;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E7D8C3;
+}
+
+.spec-label {
+    background-color: #E7D8C3; 
+    color: #5A3E2B;
+    padding: 12px 20px;
+    text-align: left;
+    width: 35%;
+    font-weight: 600;
+    border-bottom: 1px solid #DCC7B0;
+}
+
+.spec-value {
+    padding: 12px 20px;
+    color: #333;
+    border-bottom: 1px solid #E7D8C3;
+    background-color: #FDF9F0; 
+}
+.specs-table tr:last-child .spec-label,
+.specs-table tr:last-child .spec-value {
+    border-bottom: none;
+}
+
+
+.back-link {
+    text-decoration: none;
+    color: #4379A7;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .back-link:hover {
+        color: #355F84;
+        transform: translateX(-5px); 
+    }
