@@ -4,6 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
+<link rel="stylesheet" href="~/css/еdit.css" />
 <h1>Edit</h1>
 
 <h4>Author</h4>
@@ -20,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Biography" class="control-label"></label>
-                <input asp-for="Biography" class="form-control" />
+                <textarea asp-for="Biography" class="form-control"></textarea>
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
