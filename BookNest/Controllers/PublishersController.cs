@@ -53,7 +53,7 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,City")] Publisher publisher)
+        public async Task<IActionResult> Create([Bind("Name,City")] Publisher publisher)
         {
             if (ModelState.IsValid)
             {

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookNest.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookNest.Data;
 
 namespace BookNest.Controllers
 {
+    [Authorize]
     public class CartsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public CartsController(ApplicationDbContext context)
+        private readonly UserManager<Customer> _userManager;
+        public CartsController(ApplicationDbContext context, UserManager<Customer> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Carts
@@ -48,8 +48,8 @@ namespace BookNest.Controllers
         // GET: Carts/Create
         public IActionResult Create()
         {
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id");
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["BooksList"] = new SelectList(_context.Books, "Id", "Title");
+
             return View();
         }
 
@@ -58,16 +58,18 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BookId,Quantity,CustomerId")] Cart cart)
+        public async Task<IActionResult> Create([Bind("BookId,Quantity")] Cart cart)
         {
+            cart.CustomerId = _userManager.GetUserId(User);
+
             if (ModelState.IsValid)
             {
                 _context.Add(cart);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", cart.BookId);
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", cart.CustomerId);
+            ViewData["BooksList"] = new SelectList(_context.Books, "Id", "Title", cart.BookId);
+            //ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", cart.CustomerId);
             return View(cart);
         }
 

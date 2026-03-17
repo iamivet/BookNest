@@ -21,7 +21,11 @@ namespace BookNest.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+            var applicationDbContext = _context.Books
+                .Include(b => b.Author)
+                .Include(b => b.Category)
+                .Include(b => b.Publisher);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -49,9 +53,9 @@ namespace BookNest.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Id");
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Name");
             return View();
         }
 
@@ -60,8 +64,9 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,YearOfPublication,BookSummary,CoverImage,Price,Quantity,AuthorId,PublisherId,CategoryId,RegisterOn")] Book book)
+        public async Task<IActionResult> Create([Bind("Title,YearOfPublication,BookSummary,CoverImage,Price,Quantity,CatalogNumber,AuthorId,PublisherId,CategoryId")] Book book)
         {
+            book.RegisterOn = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _context.Add(book);
@@ -87,9 +92,9 @@ namespace BookNest.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", book.CategoryId);
-            ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Id", book.PublisherId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
+            ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Name", book.PublisherId);
             return View(book);
         }
 
@@ -104,6 +109,8 @@ namespace BookNest.Controllers
             {
                 return NotFound();
             }
+
+            book.RegisterOn = DateTime.Now;
 
             if (ModelState.IsValid)
             {
