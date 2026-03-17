@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Book</h4>
+<link rel="stylesheet" href="~/css/еdit.css" />
+<h1>Добави книга</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BookSummary" class="control-label"></label>
-                <input asp-for="BookSummary" class="form-control" />
+                <textarea asp-for="BookSummary" class="form-control" style="width: 100%; height: 200px; resize: none;"></textarea>
                 <span asp-validation-for="BookSummary" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -55,10 +55,15 @@
                 <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
+                <label asp-for="CatalogNumber" class="control-label"></label>
+                <input asp-for="CatalogNumber" class="form-control" />
+                <span asp-validation-for="CatalogNumber" class="text-danger"></span>
+            </div>
+          @*   <div class="form-group">
                 <label asp-for="RegisterOn" class="control-label"></label>
                 <input asp-for="RegisterOn" class="form-control" />
                 <span asp-validation-for="RegisterOn" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

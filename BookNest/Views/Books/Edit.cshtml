@@ -4,28 +4,30 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Book</h4>
+<link rel="stylesheet" href="~/css/еdit.css" />
+<h1>Промени данните за книгата</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <div class="group-inputs">
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="YearOfPublication" class="control-label"></label>
                 <input asp-for="YearOfPublication" class="form-control" />
                 <span asp-validation-for="YearOfPublication" class="text-danger"></span>
             </div>
+                </div>
+            </div>
             <div class="form-group">
                 <label asp-for="BookSummary" class="control-label"></label>
-                <input asp-for="BookSummary" class="form-control" />
+                <textarea asp-for="BookSummary" class="form-control" ></textarea>
                 <span asp-validation-for="BookSummary" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -59,19 +61,11 @@
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RegisterOn" class="control-label"></label>
-                <input asp-for="RegisterOn" class="form-control" />
-                <span asp-validation-for="RegisterOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Запази промените" class="btn btn-primary" />
+                <a asp-action="Details" class="back-to-list">Върни се назад</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
