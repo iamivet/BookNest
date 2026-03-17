@@ -11,6 +11,8 @@ namespace BookNest.Data
         public string BookSummary { get; set; } = null!;
         public string CoverImage { get; set; } = null!;
 
+        public string? CatalogNumber { get; set; }
+
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price {  get; set; }
         public int Quantity {  get; set; }
