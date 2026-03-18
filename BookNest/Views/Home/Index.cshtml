@@ -1,8 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<link rel="stylesheet" href="~/css/homeIndex.css" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Защо да изберете <span>BookNest</span>?</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon-circle"> <img src="~/images/library.jpg" alt="Библиотека" /></div>
+                <h3>Огромна библиотека</h3>
+                <p>Достъп до хиляди заглавия от класика до модерна литература в дигитален формат.</p>
+            </div>
+            <div class="info-card">
+                <div class="icon-circle">
+                    <img src="~/images/delivery.jpg" alt="Доставка" />
+                </div>
+                <h3>Закупуване от всяко място</h3>
+                <p>Вашата следваща любима история е само на един клик разстояние, независимо къде се намирате.</p>
+            </div>
+            <div class="info-card">
+                <div class="icon-circle">  <img src="~/images/personWithBook.jpg" alt="Доставка" /></div>
+                <h3>Твоята следваща книга е тук</h3>
+                <p>Купете любимото си заглавие с един клик и го добавете към личната си дигитална колекция. Сигурно плащане и незабавно четене.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="recent-books">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title mb-0">Някои <span>книги</span>, които предлагаме</h2>
+            <a asp-controller="Books" asp-action="Index" class="view-all">Виж всички <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="books-grid">
+            <div class="book-placeholder"><img src="https://www.ciela.com/media/catalog/product/cache/32bb0748c82325b02c55df3c2a9a9856/n/a/nadezhda-za-hrizolit.jpg" alt="Доставка" /></div>
+            <div class="book-placeholder"><img src="https://www.ciela.com/media/catalog/product/cache/32bb0748c82325b02c55df3c2a9a9856/9/7/9789542853695.jpg" alt="Доставка" /></div>
+            <div class="book-placeholder"><img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/a4e40ebdc3e371adff845072e1c73f37/z/h/6e841cbf693d884c76361648487c3090/zhivot-v-skalite-tvardi-koritsi-30.jpg" alt="Доставка" /></div>
+            <div class="book-placeholder"><img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/a4e40ebdc3e371adff845072e1c73f37/v/r/7be94d78cbfc56f7e2f2c533de6962d0/vremeubezhishte-meki-koritsi-30.jpg" alt="Доставка" /></div>
+        </div>
+    </div>
+</section>

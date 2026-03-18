@@ -1,0 +1,102 @@
+﻿
+.features-section, .recent-books {
+    padding: 80px 0;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.recent-books {
+    background-color: #f9f9f9; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 50px;
+}
+
+    .section-title span {
+        color: #B8A994;
+    }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.info-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border-bottom: 4px solid transparent;
+}
+
+    .info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(219, 193, 172, 0.4);
+        border-bottom: 4px solid #DBC1AC;
+    }
+
+.icon-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #A68F7B;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+    .icon-circle img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        display: block;
+    }
+
+.info-card p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.book-placeholder {
+    width: 200px; 
+    height: 300px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bdc3c7;
+    border: 2px dashed #bdc3c7;
+    overflow: hidden;
+}
+
+    .book-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+.view-all {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+    .view-all:hover {
+        color: #f1c40f;
+    }
