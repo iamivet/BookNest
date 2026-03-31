@@ -1,54 +1,85 @@
 ﻿@model BookNest.Data.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
 }
+
 <link rel="stylesheet" href="~/css/bookDetails.css" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 <div class="page-container">
-    <a asp-action="Index" class="back-link">
-        <i class="bi bi-arrow-left"></i> ← Върни се към другите книги
-    </a>
-    <div class="container">
+    <div class="top-nav">
+        <a asp-action="Index" class="back-link">
+            <i class="bi bi-arrow-left"></i> ← Върни се към каталога
+        </a>
+    </div>
 
-        <div>
-            <img class="book-img" src="@Model.CoverImage" alt="@Model.Title" />
-        </div>
-        <div class="content">
-            <h1>@Model.Title</h1>
-
-            <div class="order">
-                <span class="price">Наличност: @Model.Quantity</span>
-                <span class="price">@Model.Price €</span>
-
+    <div class="book-grid">
+        <div class="image-section">
+            <div class="sticky-wrapper">
+                <img class="book-img" src="@Model.CoverImage" alt="@Model.Title" />
+                @if (Model.Quantity <= 0)
+                {
+                    <span class="out-of-stock-badge">Изчерпано</span>
+                }
             </div>
-            <button asp-controller="Carts" asp-action="Create" id="order">Добави в количка</button>
-            <p>
-                @Model.BookSummary
-            </p>
-            <table class="specs-table">
-                <tr>
-                    <th class="spec-label">Година на издаване</th>
-                    <td class="spec-value">@Model.YearOfPublication</td>
-                </tr>
-                <tr>
-                    <th class="spec-label">Каталожен номер</th>
-                    <td class="spec-value">@(Model.CatalogNumber ?? "---")</td>
-                </tr>
-                <tr>
-                    <th class="spec-label">Автор</th>
-                    <td class="spec-value">@Model.Author?.Name</td>
-                </tr>
-                <tr>
-                    <th class="spec-label">Издателство</th>
-                    <td class="spec-value">@Model.Publisher?.Name</td>
-                </tr>
-                <tr>
-                    <th class="spec-label">Категория</td>
-                    <td class="spec-value">@Model.Category?.Name</td>
-                </tr>
-            </table>
         </div>
-      
+
+        <div class="info-section">
+            <nav aria-label="breadcrumb">
+                <span class="category-badge">@Model.Category?.Name</span>
+            </nav>
+
+            <h1 class="book-title">@Model.Title</h1>
+
+            <div class="author-row">
+                от <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" class="author-name">@Model.Author?.Name</a>
+            </div>
+
+            <div class="price-container">
+                <span class="current-price">@Model.Price.ToString("F2") €</span>
+                <span class="stock-status @(Model.Quantity > 0 ? "in-stock" : "out-of-stock")">
+                    <i class="bi bi-circle-fill"></i> @(Model.Quantity > 0 ? $"В наличност ({Model.Quantity} бр.)" : "Няма наличност")
+                </span>
+            </div>
+
+            <form asp-controller="Carts" asp-action="Create" method="post" class="purchase-section">
+                <input type="hidden" name="BookId" value="@Model.Id" />
+                <div class="quantity-picker">
+                    <label for="quantity">Количество:</label>
+                    <input type="number" id="quantity" name="Quantity" value="1" min="1" max="@Model.Quantity" class="qty-input" />
+                </div>
+                <button type="submit" class="btn-order" @(Model.Quantity <= 0 ? "disabled" : "")>
+                    <i class="bi bi-cart-plus"></i> Добави в количката
+                </button>
+            </form>
+
+            <div class="description">
+                <h3>Резюме</h3>
+                <p>@Model.BookSummary</p>
+            </div>
+
+            <div class="specs-section">
+                <h3>Детайли за книгата</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Година на издаване</th>
+                        <td>@Model.YearOfPublication</td>
+                    </tr>
+                    <tr>
+                        <th>Каталожен номер</th>
+                        <td>@(Model.CatalogNumber ?? "---")</td>
+                    </tr>
+                    <tr>
+                        <th>Издателство</th>
+                        <td>@Model.Publisher?.Name</td>
+                    </tr>
+                    <tr>
+                        <th>Категория</th>
+                        <td>@Model.Category?.Name</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-
