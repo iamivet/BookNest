@@ -1,79 +1,185 @@
-﻿.conteiner {
-    margin-top: 30px;
-    margin-left: 23px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+﻿body {
+   
+    overflow-x: hidden; 
+
+}
+.page-header {
+    text-align: center;
+    margin: 40px 0;
 }
 
 
-.box {
+.search-group {
+    position: relative;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #E6D5BF;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+    #searchInput:focus {
+        border-color: #C65A3A;
+        box-shadow: 0 4px 12px rgba(198, 90, 58, 0.2);
+        outline: none;
+    }
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #A94A30
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+
+
+.book-card {
     background: #E6D5BF;
-    width: 250px;
-    padding: 18px;
-    border-radius: 14px;
+/*    width: 280px;*/
+    /*    width: 100%;*/
+    width: 100%; /* Промени това - нека заема 100% от мястото в колоната си */
+    max-width: 400px;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.15);
-    transition: transform .25s ease, box-shadow .25s ease;
 }
 
-    .box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+    .book-card:hover {
+        transform: translateY(-10px);
+    }
+
+.card-header h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: #4A3A2A;
+    text-align: center;
+    height: 50px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+
+.image-wrapper {
+    background: #FFF6E8;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+    .image-wrapper img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
     }
 
 
-
-.book {
-    background-color: #FFF6E8;
-    width: 100%;
-    padding: 12px 0;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.book-info {
+    margin: 15px 0;
+    text-align: center;
 }
 
-.box p {
-    font-family: 'Monotype Corsiva';
-    font-size: 22px;
-    margin: 0px;
+.label {
+    color: #3A6EA5;
+    font-weight: bold;
+}
+
+.price-tag {
+    font-size: 1.2rem;
+    font-weight: bold;
     color: #4A3A2A;
 }
 
 
-.book img {
-    width: 210px;
-    height: 230px;
-    border-radius: 8px;
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: auto;
 }
 
-.price,
-.author {
-    color: #3A6EA5;
-}
-
-.book span {
-    font-weight: 500;
-    font-size: 20px;
-}
-
-.view-more {
+.action-btn {
     text-decoration: none;
-    font-weight: 600;
-    color: #1a4c46;
-    background: #C65A3A;
-    padding: 8px 18px;
-    border-radius: 8px;
-    margin-top: 6px;
-    transition: background .25s ease, color .25s ease;
-    border: 2px solid #A94A30;
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: white;
+    flex: 1;
+    text-align: center;
+    transition: opacity 0.2s;
 }
 
-    .view-more:hover {
-        background: #A94A30;
-        color: #FFF;
+.view {
+    background: #3A6EA5;
+}
+
+.edit {
+    background: #5a8d5a;
+}
+
+.delete {
+    background: #C65A3A;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+    color: white;
+}
+
+
+/*.btn-create {
+    display: inline-block;
+    margin-top: 15px;
+    background: #4A3A2A;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+}*/
+
+.btn-create {
+    background: linear-gradient(135deg, #D27D56 0%, #B56545 100%);
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(181, 101, 69, 0.3);
+    transition: all 0.3s ease;
+    margin:0px;
+}
+
+    .btn-create:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(181, 101, 69, 0.4);
     }

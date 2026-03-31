@@ -1,28 +1,58 @@
 ﻿@model IEnumerable<BookNest.Data.Book>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Каталог Книги";
 }
-<link rel="stylesheet" href="~/css/bookIndex.css" />
-<p>
-    <a asp-action="Create" class="view-more">Create New</a>
-</p>
 
-<div class="conteiner">
+<link rel="stylesheet" href="~/css/bookIndex.css" />
+<script src="~/js/bookFilter.js"></script>
+
+
+<div class="page-header">
+    <h1>Нашите Книги</h1>
+
+    <div class="search-group">
+        <input type="text" id="searchInput" placeholder="Започнете да пишете заглавие или автор..." />
+        <span class="search-icon">🔍</span>
+    </div>
+
+   
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create" class="btn-create"> Добави нова книга</a>
+}
+<div class="main-container" id="bookList">
+    
     @foreach (var item in Model)
     {
-
-        <div class="box">
-            <p> @item.Title</p>
-            <div class="book">
-
-                <img src="@item.CoverImage" alt="@item.Title" />
-                <span><span class="price">Цена:</span>  @item.Price €</span>
-                <span><span class="author">Автор:</span>  @item.Author.Name</span>
+        <div class="book-card">
+            <div class="card-header">
+                <h3 class="book-title">@item.Title</h3>
             </div>
-            <a asp-action="Details" asp-route-id="@item.Id" class="view-more">Виж повече</a>
-            <a asp-action="Edit" asp-route-id="@item.Id" class="view-more">Edit</a>
-            <a asp-action="Delete" asp-route-id="@item.Id" class="view-more">Delete</a>
+
+            <div class="image-wrapper">
+                <img src="@item.CoverImage" alt="@item.Title" />
+            </div>
+
+            <div class="book-info">
+                <p><span class="label">Автор:</span> <span class="book-author">@item.Author.Name</span></p>
+                <p><span class="label">Цена:</span> <span class="price-tag">@item.Price €</span></p>
+            </div>
+
+            <div class="card-actions">
+
+                @if ( User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="action-btn edit">Редактирай</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="action-btn delete">Изтрий</a>
+                }
+                else
+                {
+                    <a asp-action="Details" asp-route-id="@item.Id" class="action-btn view">Виж</a>
+                }
+            </div>
         </div>
     }
 </div>

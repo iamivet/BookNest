@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 <link rel="stylesheet" href="~/css/categoriesIndex.css" />
-<h1>Index</h1>
+<h1 class="page-title">Категории</h1>
 
 <p>
     <a asp-action="Create" class="btn-create">Create New</a>
@@ -26,9 +26,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="action-link details" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="action-link delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Промени</a> |
+@*                     <a class="action-link details" asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
+                    <a class="action-link delete" asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
                 </td>
             </tr>
         }
