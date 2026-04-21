@@ -1,0 +1,137 @@
+﻿
+
+.cart-box {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: #FFFDF9;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(74, 58, 42, 0.15);
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #4A3A2A;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #4A3A2A;
+}
+
+thead {
+    background: #E6D5BF;
+    color: #4A3A2A;
+}
+
+    thead th {
+        padding: 12px;
+        text-align: left;
+    }
+
+tbody tr {
+    border-bottom: 1px solid #C8B9A6;
+}
+
+    tbody tr:nth-child(even) {
+        background: #FFF6E8;
+    }
+
+tbody td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+tbody img {
+    width: 60px;
+    border-radius: 10px;
+}
+
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 8px 15px;
+    margin: 2px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.edit-btn {
+    background: #3A6EA5;
+    color: #fff;
+}
+
+    .edit-btn:hover {
+        background: #6FA1D8;
+    }
+
+.remove-btn {
+    background: #C65A3A;
+    color: #fff;
+}
+
+    .remove-btn:hover {
+        background: #A94A30;
+    }
+
+.btn-continue {
+    background: #C8B9A6;
+    color: #4A3A2A;
+}
+
+    .btn-continue:hover {
+        background: #E6D5BF;
+    }
+
+button:last-child {
+    background: #D4A373;
+    color: #fff;
+}
+
+    button:last-child:hover {
+        background: #E6C59A;
+    }
+
+
+.summary {
+    background: #FFF6E8;
+    border: 1px solid #C8B9A6;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .summary p {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+        font-weight: bold;
+        color: #4A3A2A;
+    }
+
+    .summary select {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+
+input[type="number"] {
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #C8B9A6;
+    background-color: #FFFDF9;
+    color: #4A3A2A;
+}
+
+    input[type="number"]:focus {
+        border-color: #C65A3A;
+        outline: none;
+        box-shadow: 0 0 4px rgba(198, 90, 58, 0.5);
+    }
