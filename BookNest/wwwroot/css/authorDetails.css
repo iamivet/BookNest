@@ -1,0 +1,208 @@
+﻿.author-page-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Навигация */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.back-link, .edit-link {
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.back-link {
+    color: #4A3A2A;
+}
+
+    .back-link:hover {
+        color: #C65A3A;
+        background: #FFF6E8;
+    }
+
+.edit-link {
+    color: #fff;
+    background: #3A6EA5;
+}
+
+    .edit-link:hover {
+        background: #2D5682;
+    }
+
+/* Картата */
+.author-profile-card {
+    display: flex;
+    background: #FFFDF9;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(74, 58, 42, 0.1);
+    overflow: hidden;
+    min-height: 400px;
+}
+
+/* Лява част (Снимка) */
+.author-image-section {
+    flex: 0 0 40%;
+    background: #E6D5BF; /* Фон, ако снимката се зарежда */
+}
+
+.author-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Снимката ще запълни идеално мястото без да се размазва */
+    object-position: top center;
+}
+
+.photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #4A3A2A;
+    font-weight: bold;
+}
+
+/* Дясна част (Информация) */
+.author-info-section {
+    flex: 1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.badge {
+    background: #C8B9A6;
+    color: #4A3A2A;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    margin-bottom: 15px;
+}
+
+.author-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: #4A3A2A;
+    margin: 0 0 25px 0;
+}
+
+.bio-wrapper h3 {
+    font-size: 18px;
+    color: #C65A3A;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bio-text {
+    color: #5A4A3A;
+    line-height: 1.8;
+    font-size: 16px;
+    /* Настройки за скриване на дългия текст */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Показва само 6 реда първоначално */
+    -webkit-box-orient: vertical;
+    transition: all 0.5s ease;
+}
+
+    .bio-text.expanded {
+        -webkit-line-clamp: unset;
+    }
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #3A6EA5;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+    .read-more-btn:hover {
+        text-decoration: underline;
+    }
+
+/* Мобилен изглед */
+@media (max-width: 768px) {
+    .author-profile-card {
+        flex-direction: column;
+    }
+
+    .author-image-section {
+        height: 300px;
+    }
+}
+
+
+/* --- Секция за книгите --- */
+.author-books-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #E6D5BF; /* Лека разделителна линия след биографията */
+}
+
+    .author-books-section h3 {
+        font-size: 18px;
+        color: #C65A3A;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.author-books-list {
+    list-style: none; /* Махаме стандартните грозни точки */
+    padding: 0;
+    margin: 0;
+}
+
+    .author-books-list li {
+        margin-bottom: 12px;
+    }
+
+    .author-books-list a {
+        text-decoration: none;
+        color: #4A3A2A;
+        font-size: 16px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: #FFF6E8; /* Лек фон за всяка книга */
+        width: fit-content;
+    }
+
+    /* Иконката за книга */
+    .author-books-list i {
+        color: #3A6EA5;
+        font-size: 18px;
+    }
+
+    /* Ефект при посочване с мишката */
+    .author-books-list a:hover {
+        background: #E6D5BF;
+        color: #C65A3A;
+        transform: translateX(5px); /* Леко побутване надясно за готин ефект */
+    }
+
+.no-books-msg {
+    color: #8A7A6A;
+    font-style: italic;
+    font-size: 15px;
+}

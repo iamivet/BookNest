@@ -1,36 +1,71 @@
 ﻿@model BookNest.Data.Author
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Name;
 }
 
-<h1>Details</h1>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/authorDetails.css" />
 
-<div>
-    <h4>Author</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Biography)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Biography)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
+<div class="author-page-container">
+    <div class="top-nav">
+        <a asp-action="Index" class="back-link">
+            ← Върни се към авторите
+        </a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="edit-link">
+            Редактирай профила
+        </a>
+    </div>
+
+    <div class="author-profile-card">
+        <div class="author-image-section">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="author-photo" />
+            }
+            else
+            {
+                <div class="photo-placeholder">Липсва снимка</div>
+            }
+        </div>
+
+        <div class="author-info-section">
+            <span class="badge">Автор</span>
+            <h1 class="author-name">@Model.Name</h1>
+
+            <div class="bio-wrapper">
+                <h3>Биография</h3>
+                <div class="bio-text" id="bioText">
+                    @Html.Raw(Model.Biography?.Replace("\n", "<br/>") ?? "Няма добавена биография за този автор.")
+                </div>
+                <button id="readMoreBtn" class="read-more-btn">Прочети повече ▼</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="author-books-section">
+    <h3>Книги от автора</h3>
+
+    @if (Model.Books != null && Model.Books.Any())
+    {
+        <ul class="author-books-list">
+            @foreach (var book in Model.Books)
+            {
+                <li>
+                    <a asp-controller="Books" asp-action="Details" asp-route-id="@book.Id">
+                        <i class="bi bi-book"></i> @book.Title
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="no-books-msg">Все още няма добавени книги от този автор.</p>
+    }
 </div>
+
+@section Scripts {
+    <script src="~/js/authorDetails.js"></script>
+}
