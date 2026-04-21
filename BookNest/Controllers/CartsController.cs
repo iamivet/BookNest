@@ -62,6 +62,22 @@ namespace BookNest.Controllers
         {
             cart.CustomerId = _userManager.GetUserId(User);
 
+            if(await _context.Carts.AnyAsync(c => c.CustomerId == cart.CustomerId && c.BookId == cart.BookId))
+            {
+                Cart? updateCart = await _context.Carts.FirstOrDefaultAsync(c => c.CustomerId == cart.CustomerId && c.BookId == cart.BookId);
+
+                if (updateCart == null)
+                {
+                    return NotFound(); 
+                }
+
+                updateCart.Quantity += cart.Quantity;
+
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(cart);
