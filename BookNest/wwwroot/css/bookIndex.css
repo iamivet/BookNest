@@ -61,9 +61,7 @@
 
 .book-card {
     background: #E6D5BF;
-/*    width: 280px;*/
-    /*    width: 100%;*/
-    width: 100%; /* Промени това - нека заема 100% от мястото в колоната си */
+    width: 100%;
     max-width: 400px;
     padding: 15px;
     border-radius: 18px;
