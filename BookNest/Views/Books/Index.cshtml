@@ -11,12 +11,22 @@
 <div class="page-header">
     <h1>Нашите Книги</h1>
 
-    <div class="search-group">
-        <input type="text" id="searchInput" placeholder="Започнете да пишете заглавие или автор..." />
-        <span class="search-icon">🔍</span>
-    </div>
+    <div class="filter-controls">
+        <div class="search-group">
+            <input type="text" id="searchInput" placeholder="Започнете да пишете заглавие или автор..." />
+            <span class="search-icon">🔍</span>
+        </div>
 
-   
+        <div class="category-group">
+            <select id="categoryFilter">
+                <option value="all">Всички категории</option>
+                @foreach (var cat in Model.Select(b => b.Category.Name).Distinct())
+                {
+                    <option value="@cat">@cat</option>
+                }
+            </select>
+        </div>
+    </div>
 </div>
 
 @if (User.IsInRole("Admin"))
@@ -24,7 +34,7 @@
     <a asp-action="Create" class="btn-create"> Добави нова книга</a>
 }
 <div class="main-container" id="bookList">
-    
+
     @foreach (var item in Model)
     {
         <div class="book-card">
@@ -43,7 +53,7 @@
 
             <div class="card-actions">
 
-                @if ( User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin"))
                 {
                     <a asp-action="Edit" asp-route-id="@item.Id" class="action-btn edit">Редактирай</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="action-btn delete">Изтрий</a>

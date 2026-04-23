@@ -11,8 +11,10 @@
 
 .search-group {
     position: relative;
-    max-width: 500px;
+    max-width: 800px;
+    width: 100% !important;
     margin: 20px auto;
+    flex: 2;
 }
 
 #searchInput {
@@ -38,6 +40,35 @@
     transform: translateY(-50%);
     font-size: 18px;
     color: #A94A30
+}
+
+.filter-controls {
+    display: flex !important;
+    justify-content: center !important; /* Центрира ги хоризонтално */
+    align-items: center !important; /* Центрира ги вертикално */
+    gap: 30px !important; /* Разстоянието между търсачката и менюто */
+    margin-top: 20px;
+    width: 100%;
+}
+
+.category-group select {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #eaddca;
+    background-color: white;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+    .category-group select:focus {
+        border-color: #c45d3d;
+    }
+
+.search-group, .category-group {
+    margin: 0 !important; /* Спира външни сили да ги избутват */
+    width: auto !important; /* Пречи им да се разпъват до края на екрана */
 }
 
 .main-container {
