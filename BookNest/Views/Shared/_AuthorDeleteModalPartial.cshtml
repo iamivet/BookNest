@@ -1,0 +1,31 @@
+﻿@model BookNest.Data.Author
+
+<link rel="stylesheet" href="~/css/authorsDeletePartialView.css" />
+
+<div class="modal fade" id="deleteAuthorModal-@Model.Id" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-modal-style">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" style="color: #4a3f35;">Изтриване на автор</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <p style="color: #5a4d41; font-size: 1.1rem;">
+                    Сигурни ли сте, че искате да изтриете <br />
+                    <strong>"@Model.Name"</strong>?
+                </p>
+                <p class="small text-danger">Внимание: Това може да повлияе на книгите, свързани с него!</p>
+
+                <form asp-controller="Authors" asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <button type="button" class="btn btn-cancel-custom" data-bs-dismiss="modal">Отказ</button>
+                        <button type="submit" class="btn btn-delete-custom">Изтрий</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
