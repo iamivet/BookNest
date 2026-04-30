@@ -1,6 +1,4 @@
-﻿
-
-.cart-box {
+﻿.cart-box {
     width: 90%;
     max-width: 1000px;
     margin: 50px auto;
@@ -134,4 +132,96 @@ input[type="number"] {
         border-color: #C65A3A;
         outline: none;
         box-shadow: 0 0 4px rgba(198, 90, 58, 0.5);
+    }
+.empty-cart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 50vh; 
+}
+
+.empty-cart-card {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    border: 1px solid #f4ece2;
+}
+
+.icon-container {
+    background-color: #fcf6ef;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 24px auto;
+}
+.empty-cart-title {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+
+.empty-cart-subtitle {
+    font-size: 15px;
+    color: #666666;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.btn-continue {
+    display: inline-block;
+    background-color: #d59b6c; 
+    color: #ffffff !important; 
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(213, 155, 108, 0.3); 
+}
+
+    .btn-continue:hover {
+        background-color: #c08556; 
+        transform: translateY(-3px); 
+        box-shadow: 0 8px 20px rgba(213, 155, 108, 0.4);
+        text-decoration: none;
+    }
+
+.btn-2d-checkout {
+    background-color: #D4A373; 
+    color: #ffffff;
+    border: 2px solid #D4A373;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+    .btn-2d-checkout:hover {
+        background-color: transparent;
+        color: #D4A373; 
+        border: 2px solid #D4A373; 
+        box-shadow: none;
+        transform: none; 
+    }
+
+    .btn-2d-checkout:active {
+        background-color: #4A3A2A;
+        border-color: #4A3A2A;
+        color: #fff;
     }

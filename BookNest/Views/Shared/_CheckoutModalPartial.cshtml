@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BookNest.Data.Cart>
+
+<link rel="stylesheet" href="~/css/checkout.css" />
+
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content checkout-modal">
+            <div class="modal-header checkout-header">
+                <h5 class="modal-title"><i class="fas fa-shopping-bag"></i> Финализиране на поръчка</h5>
+                <button type="button" class="close-modal-btn" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="checkout-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4>Искате ли да завършите поръчката?</h4>
+                <p>Общо за плащане: <strong>@Model.Sum(i => i.Quantity * i.Book.Price).ToString("F2") лв.</strong></p>
+                <small class="text-muted">С натискането на бутона "Потвърждавам", Вашата поръчка ще бъде изпратена за обработка.</small>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary-outline" data-bs-dismiss="modal">Преглед на количката</button>
+                <form asp-controller="Orders" asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-confirm-order">Потвърждавам</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

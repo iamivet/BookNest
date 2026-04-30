@@ -1,0 +1,96 @@
+﻿/* Специфичен стил за Checkout Модала */
+.checkout-modal {
+    border-top: 5px solid #28a745; /* Зелена линия най-отгоре */
+    border-radius: 20px;
+}
+
+.checkout-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+
+
+    justify-content: space-between; /* Бута заглавието вляво, а хиксчето вдясно */
+    align-items: center;
+}
+
+    .checkout-header .modal-title {
+        color: #28a745;
+        font-size: 1.4rem;
+    }
+
+.checkout-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 15px;
+    animation: scaleIn 0.3s ease-in-out;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Бутон за потвърждение */
+.btn-confirm-order {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .btn-confirm-order:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    }
+
+/* Бутон за отказ (outline стил) */
+.btn-secondary-outline {
+    background: transparent;
+    border: 1px solid #ced4da;
+    color: #6c757d;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+    .btn-secondary-outline:hover {
+        background: #f8f9fa;
+        color: #333;
+    }
+
+
+.close-modal-btn {
+    background-color: #f8f4f0; /* Много бледо бежово - да подхожда на BookNest */
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px; /* Леко заоблено квадратче (2D стил) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A94A30; /* Тъмно керемидено/червено */
+    transition: all 0.2s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+    /* Ефект при посочване */
+    .close-modal-btn:hover {
+        background-color: #A94A30; /* Инверсия на цветовете */
+        color: #ffffff;
+        transform: rotate(90deg); /* Яко завъртане на хикса */
+    }
+
+    .close-modal-btn i {
+        font-size: 1.1rem;
+    }
