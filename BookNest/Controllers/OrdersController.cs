@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookNest.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookNest.Data;
 
 namespace BookNest.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Customer> _userManager;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(ApplicationDbContext context, UserManager<Customer> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Orders
@@ -23,6 +24,15 @@ namespace BookNest.Controllers
         {
             var applicationDbContext = _context.Orders.Include(o => o.Book).Include(o => o.Customer);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Orders
+        public async Task<IActionResult> CustomerOrders()
+        {
+            var userId = _userManager.GetUserId(User);
+
+            var applicationDbContext = _context.Orders.Include(o => o.Book).Include(o => o.Customer).Where(o => o.CustomerId == userId);
+            return RedirectToAction("Index", "Orders");
         }
 
         // GET: Orders/Details/5
@@ -33,42 +43,64 @@ namespace BookNest.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders
+            var baseOrder = await _context.Orders
                 .Include(o => o.Book)
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
+
+            if (baseOrder == null)
             {
                 return NotFound();
             }
 
-            return View(order);
-        }
+            var allItemsInOrder = await _context.Orders
+        .Include(o => o.Book)
+        .Where(o => o.CustomerId == baseOrder.CustomerId &&
+                    o.CreatedOn.Year == baseOrder.CreatedOn.Year &&
+                    o.CreatedOn.Month == baseOrder.CreatedOn.Month &&
+                    o.CreatedOn.Day == baseOrder.CreatedOn.Day &&
+                    o.CreatedOn.Hour == baseOrder.CreatedOn.Hour &&
+                    o.CreatedOn.Minute == baseOrder.CreatedOn.Minute)
+        .ToListAsync();
 
-        // GET: Orders/Create
-        public IActionResult Create()
-        {
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id");
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id");
-            return View();
-        }
+            return View(allItemsInOrder);
 
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+            //return View(order);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BookId,Quantity,CustomerId,CreatedOn")] Order order)
+        public async Task<IActionResult> Create()
         {
-            if (ModelState.IsValid)
+            var userId = _userManager.GetUserId(User);
+
+            var cartItems = await _context.Carts
+                .Where(c => c.CustomerId == userId)
+                .ToListAsync();
+
+            if (cartItems.Count == 0)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Carts");
             }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", order.BookId);
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", order.CustomerId);
-            return View(order);
+
+            foreach (var item in cartItems)
+            {
+                var order = new Order
+                {
+                    BookId = item.BookId,
+                    Quantity = item.Quantity,
+                    CustomerId = userId,
+                    CreatedOn = DateTime.Now
+                };
+                _context.Orders.Add(order);
+            }
+
+            _context.Carts.RemoveRange(cartItems);
+
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Orders");
         }
 
         // GET: Orders/Edit/5
