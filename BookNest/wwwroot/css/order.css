@@ -1,0 +1,125 @@
+﻿.order-group-card {
+    background: #fff;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.order-header-info {
+    background: #fcf8f3;
+    padding: 15px 25px;
+    border-bottom: 1px solid #E6D5BF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.order-meta .order-id {
+    background: #D27D56;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.order-items {
+    padding: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+    .order-item:last-child {
+        border-bottom: none;
+    }
+
+.book-preview {
+    position: relative;
+    width: 70px;
+    margin-right: 20px;
+}
+
+.book-thumb {
+    width: 60px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.item-quantity {
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    background: #5A3E2B;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.book-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.order-footer {
+    padding: 15px 25px;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-section {
+    font-size: 1.2rem;
+    color: #5A3E2B;
+}
+
+.btn-manage {
+    background: #E6D5BF;
+    color: #5A3E2B;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+    .btn-manage:hover {
+        background: #D27D56;
+        color: white;
+    }
+
+.btn-delete-group {
+    color: #dc3545;
+    margin-left: 15px;
+    font-size: 1.2rem;
+}
+
+
+.item-quantity {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: #5A3E2B;
+    color: white;
+    font-size: 0.75rem;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid white;
+}
