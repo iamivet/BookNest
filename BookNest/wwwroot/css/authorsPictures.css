@@ -10,6 +10,15 @@
     transition: all 0.3s ease;
 }
 
+.page-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #5A3E2B;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
     .btn-create:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(181, 101, 69, 0.4);
@@ -113,6 +122,20 @@
 .admin-mode .edit:hover {
     color: #28a745;
 }
+
+/*.admin-mode .delete:hover {
+    color: #dc3545;
+}*/
+
+.admin-mode .action-btn.delete {
+    background: transparent; 
+    border: none;
+    padding: 0; 
+    color: #555; 
+    font-size: 0.9rem; 
+    cursor: pointer; 
+}
+
 
 .admin-mode .delete:hover {
     color: #dc3545;

@@ -36,12 +36,18 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <div class="admin-controls">
-                        <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Редактирай</a>
                         <span class="separator">|</span>
-                        <a class="action-link delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <button type="button" class="action-btn delete"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteAuthorModal-@item.Id">
+                            Изтрий
+                        </button>
                     </div>
                 }
             </div>
         </div>
+
+        <partial name="_AuthorDeleteModalPartial" model="item" />
     }
 </div>
