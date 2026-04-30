@@ -1,0 +1,32 @@
+﻿.custom-modal-style {
+    background-color: #e8dcc7; 
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.btn-delete-custom {
+    background-color: #cb5a3e;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 25px;
+    transition: 0.3s;
+}
+
+    .btn-delete-custom:hover {
+        background-color: #b04930;
+        color: white;
+    }
+
+.btn-cancel-custom {
+    background-color: #729d66;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 25px;
+    transition: 0.3s;
+}
+
+    .btn-cancel-custom:hover {
+        background-color: #5d8252;
+        color: white;
+    }

@@ -9,7 +9,7 @@
 
 
 <div class="page-header">
-    <h1>Нашите Книги</h1>
+    <h1 class="page-title">Нашите Книги</h1>
 
     <div class="filter-controls">
         <div class="search-group">
@@ -37,7 +37,7 @@
 
     @foreach (var item in Model)
     {
-        <div class="book-card">
+        <div class="book-card" data-category="@item.Category.Name">
             <div class="card-header">
                 <h3 class="book-title">@item.Title</h3>
             </div>
@@ -45,6 +45,11 @@
             <div class="image-wrapper">
                 <img src="@item.CoverImage" alt="@item.Title" />
             </div>
+
+            @if (item.Quantity == 1)
+            {
+                <span class="last-unit-badge">Последна бройка!</span>
+            }
 
             <div class="book-info">
                 <p><span class="label">Автор:</span> <span class="book-author">@item.Author.Name</span></p>
@@ -56,7 +61,8 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <a asp-action="Edit" asp-route-id="@item.Id" class="action-btn edit">Редактирай</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="action-btn delete">Изтрий</a>
+                    <button type="button" class="action-btn delete" data-bs-toggle="modal"
+                       data-bs-target="#deleteModal-@item.Id">Изтрий</button>
                 }
                 else
                 {
@@ -64,5 +70,10 @@
                 }
             </div>
         </div>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <partial name="_BookDeleteModalPartial" model="item" />
+        }
     }
 </div>

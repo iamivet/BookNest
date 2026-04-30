@@ -1,0 +1,27 @@
+﻿@model BookNest.Data.Book
+
+<link rel="stylesheet" href="~/css/bookDeletePartialView.css" />
+
+<div class="modal fade" id="deleteModal-@Model.Id" tabindex="-1" aria-labelledby="label-@Model.Id" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #e8dcc7; border-radius: 15px; border: none;">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold" id="label-@Model.Id" style="color: #4a3f35;">Изтриване на книга</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p style="color: #5a4d41;">Сигурни ли сте, че искате да премахнете <strong>@Model.Title</strong>?</p>
+
+                <form asp-controller="Books" asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <button type="button" class="btn" style="background-color: #729d66; color: white;" data-bs-dismiss="modal">Отказ</button>
+                        <button type="submit" class="btn" style="background-color: #cb5a3e; color: white;">Изтрий</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
