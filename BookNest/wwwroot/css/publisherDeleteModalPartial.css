@@ -1,0 +1,33 @@
+﻿.custom-publisher-modal {
+    border-radius: 20px;
+    border: none;
+    background-color: #fffaf5;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+    .custom-publisher-modal .modal-title {
+        color: #5a3e2b;
+        font-weight: bold;
+    }
+
+.publisher-name-highlight {
+    color: #c47d5e;
+    margin: 15px 0;
+}
+
+.btn-delete-confirm {
+    background-color: #c47d5e;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 25px;
+    border: none;
+}
+
+    .btn-delete-confirm:hover {
+        background-color: #a6654a;
+        color: white;
+    }
+
+.btn-outline-secondary {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}

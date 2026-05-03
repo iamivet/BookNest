@@ -1,0 +1,31 @@
+﻿@model BookNest.Data.Publisher
+
+
+<link rel="stylesheet" href="~/css/publisherDeleteModalPartial.css" />
+
+
+<div class="modal fade" id="deletePublisherModal-@Model.Id" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-publisher-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Изтриване на издателство</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Сигурни ли сте, че искате да премахнете издателство</p>
+                <h4 class="publisher-name-highlight">„@Model.Name“</h4>
+                <small class="text-muted">Град: @Model.City</small>
+            </div>
+            <div class="modal-footer border-0 d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отказ</button>
+
+                <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-delete-confirm">Потвърди</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
