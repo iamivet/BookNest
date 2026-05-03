@@ -1,0 +1,27 @@
+﻿@model BookNest.Data.Category
+
+<link rel="stylesheet" href="~/css/categoryDeleteModalPartial.css" />
+
+<div class="modal fade" id="deleteCategoryModal-@Model.Id" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-booknest-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Изтриване на категория</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Сигурни ли сте, че искате да изтриете категория</p>
+                <h4 class="highlight-text">„@Model.Name“?</h4>
+                <p class="small text-muted">Всички книги в тази категория ще останат без категория.</p>
+            </div>
+            <div class="modal-footer border-0 d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-cancel" data-bs-dismiss="modal">Отказ</button>
+
+                <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-confirm-delete">Изтрий</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
