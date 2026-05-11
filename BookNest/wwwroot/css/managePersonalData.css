@@ -1,0 +1,45 @@
+﻿/* Информационен блок */
+.alert-info-custom {
+    background-color: #fcf8f3;
+    border-left: 4px solid #bc9b6a;
+    padding: 15px;
+    color: #5d4037;
+    font-size: 0.95rem;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Текст за предупреждение */
+.warning-text {
+    color: #a94442; /* Тъмно червено за внимание */
+    margin-top: 10px;
+}
+
+/* Разделителна линия */
+.hr-custom {
+    border-top: 1px solid #eaddca;
+    margin: 20px 0;
+}
+
+/* Бутон за изтриване (специален стил) */
+.btn-delete-custom {
+    display: inline-block;
+    background-color: transparent;
+    color: #a94442;
+    border: 2px solid #a94442;
+    border-radius: 25px;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+    .btn-delete-custom:hover {
+        background-color: #a94442;
+        color: white;
+        text-decoration: none;
+    }
+
+/* Използваме вече готовия btn-save за бутона "Изтегли" */

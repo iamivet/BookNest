@@ -12,9 +12,12 @@
         <a asp-action="Index" class="back-link">
             ← Върни се към авторите
         </a>
-        <a asp-action="Edit" asp-route-id="@Model?.Id" class="edit-link">
-            Редактирай профила
-        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="edit-link">
+                Редактирай профила
+            </a>
+        }
     </div>
 
     <div class="author-profile-card">

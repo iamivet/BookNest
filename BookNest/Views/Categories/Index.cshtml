@@ -7,13 +7,13 @@
 <h1 class="page-title">Категории</h1>
 
 <p>
-    <a asp-action="Create" class="btn-create">Create New</a>
+    <a asp-action="Create" class="btn-create">Добави нова категория</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+               Категория
             </th>
             <th></th>
         </tr>
@@ -27,10 +27,15 @@
                 </td>
                 <td>
                     <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Промени</a> |
-@*                     <a class="action-link details" asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
-                    <a class="action-link delete" asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+                    <button type="button" class="action-link delete"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteCategoryModal-@item.Id">
+                        Изтрий
+                    </button>
                 </td>
             </tr>
+
+            <partial name="_CategoryDeleteModalPartial" model="item" />
         }
     </tbody>
 </table>

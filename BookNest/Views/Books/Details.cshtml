@@ -10,8 +10,10 @@
 <div class="page-container">
     <div class="top-nav">
         <a asp-action="Index" class="back-link">
-            <i class="bi bi-arrow-left"></i> ← Върни се към каталога
+          ← Върни се към каталога
         </a>
+
+
     </div>
 
     <div class="book-grid">
@@ -33,7 +35,7 @@
             <h1 class="book-title">@Model.Title</h1>
 
             <div class="author-row">
-                от <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" class="author-name">@Model.Author?.Name</a>
+                от <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" class="author-name">@(Model.Author?.Name?.Replace(" BG", ""))</a>
             </div>
 
             <div class="price-container">

@@ -1,0 +1,143 @@
+﻿.contacts-wrapper {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-main);
+}
+
+.contacts-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+    .contacts-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .contacts-header .accent {
+        color: var(--accent-color);
+    }
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Стил за картите */
+.info-card, .hours-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(213, 155, 108, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+    .info-item .icon {
+        font-size: 1.5rem;
+        background: var(--bg-color);
+        padding: 10px;
+        border-radius: 12px;
+        margin-right: 20px;
+    }
+
+    .info-item h3 {
+        font-size: 1.1rem;
+        margin: 0 0 5px 0;
+        color: var(--accent-color);
+    }
+
+/* Работно време - интересна подредба */
+.work-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dots {
+    flex: 1;
+    border-bottom: 1px dashed var(--border-color);
+    margin: 0 10px;
+}
+
+.holiday {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Контейнерът на картата */
+.map-placeholder {
+    position: relative;
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 15px; /* Заоблени ъгли за целия контейнер */
+    overflow: hidden; /* Важно: за да не излизат острите ъгли на картата отвън */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background-color: var(--bg-color);
+    line-height: 0; /* Премахва малкото празно разстояние под iframe-а */
+}
+
+    /* Скриваме текста, ако картата е заредена (по желание) */
+    .map-placeholder p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        color: var(--text-muted);
+        pointer-events: none; /* Да не пречи на кликането по картата */
+    }
+
+    /* Самата карта */
+    .map-placeholder iframe {
+        width: 100% !important; /* Заема цялата широчина на контейнера */
+        height: 300px; /* Можеш да промениш височината тук */
+        border: none;
+        display: block;
+        position: relative;
+        z-index: 2; /* Застава над текста */
+    }
+
+/* Социални мрежи */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: var(--accent-color);
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .social-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(213, 155, 108, 0.4);
+    }
+
+/* Мобилна версия */
+@media (max-width: 768px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+}

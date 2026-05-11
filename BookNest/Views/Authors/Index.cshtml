@@ -10,7 +10,7 @@
 @if (User.IsInRole("Admin"))
 {
     <p>
-    <a class="btn-create" asp-action="Create">Create New</a>
+    <a class="btn-create" asp-action="Create">Добави автор</a>
 </p>
 }
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="author-info">
-                <h3 class="author-name">@item.Name</h3>
+                <h3 class="author-name">@item.Name.Replace(" BG", "")</h3>
 
                 @if (User.IsInRole("Admin"))
                 {

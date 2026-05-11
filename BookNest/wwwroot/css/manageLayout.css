@@ -1,0 +1,46 @@
+﻿/* Главни заглавия в секцията за управление */
+.main-manage-title {
+    color: #5d4037; /* Тъмно кафяво */
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sub-manage-title {
+    color: #8d6e63; /* По-светло кафяво */
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+/* Стилизиране на страничната навигация (_ManageNav) */
+.nav-pills .nav-link {
+    color: #5d4037 !important;
+    background-color: #fdfaf5;
+    border: 1px solid #eaddca;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+    /* Стил за активния бутон в менюто */
+    .nav-pills .nav-link.active {
+        background-color: #bc9b6a !important; /* Златисто-бежово */
+        color: white !important;
+        border-color: #bc9b6a;
+        box-shadow: 0 4px 8px rgba(188, 155, 106, 0.3);
+    }
+
+    /* Ховър ефект върху линковете в менюто */
+    .nav-pills .nav-link:hover:not(.active) {
+        background-color: #eaddca;
+        transform: translateX(5px);
+    }
+
+/* Разделителната линия */
+.hr-custom {
+    border-top: 2px solid #eaddca;
+    opacity: 0.6;
+    margin-bottom: 30px;
+}

@@ -22,3 +22,46 @@
         });
     }
 });
+
+
+// =========================
+// CUSTOM DROPDOWN FIX
+// =========================
+
+//document.addEventListener("DOMContentLoaded", function () {
+
+//    // всички dropdown nav items
+//    const dropdownItems = document.querySelectorAll(".nav-item.dropdown");
+
+//    dropdownItems.forEach(item => {
+
+//        const toggle = item.querySelector(".dropdown-toggle");
+//        const menu = item.querySelector(".dropdown-menu");
+
+//        if (!toggle || !menu) return;
+
+//        // SHOW MENU
+//        item.addEventListener("mouseenter", () => {
+
+//            menu.classList.add("show");
+//            toggle.classList.add("show");
+
+//            menu.style.display = "block";
+
+//        });
+
+//        // HIDE MENU
+//        item.addEventListener("mouseleave", () => {
+
+//            menu.classList.remove("show");
+//            toggle.classList.remove("show");
+
+//            menu.style.display = "none";
+
+//        });
+
+//    });
+
+//});
+
+

@@ -8,16 +8,16 @@
 <h1 class="page-title">Издателства</h1>
 
 <p>
-    <a class="btn-create"  asp-action="Create">Create New</a>
+    <a class="btn-create"  asp-action="Create">Добави ново издателство</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+              Издателство
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+             Град
             </th>
             <th></th>
         </tr>
@@ -32,11 +32,16 @@
                 @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
-                    <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-@*                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
-                    <a class="action-link delete"  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="action-link edit" asp-action="Edit" asp-route-id="@item.Id">Редактирай</a> |
+                    <button type="button" class="action-link delete"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deletePublisherModal-@item.Id">
+                        Изтрий
+                    </button>
             </td>
         </tr>
+
+            <partial name="_PublisherDeleteModalPartial" model="item" />
 }
     </tbody>
 </table>

@@ -35,7 +35,18 @@
                         <td><input type="number" class="quantity-input" value="@item.Quantity" min="1" style="width:50px"></td>
                         <td class="item-total">@(item.Quantity* item.Book.Price) лв.</td>
                         <td class="actions">
-                            <button class="edit-btn" asp-controller="Carts" asp-action="Edit" asp-route-id="@item.Id">Редактирай</button>
+                            <button type="button" class="view-mode change-qty-btn" onclick="showElements(this)">Промени бройката</button>
+
+                            <form asp-controller="Carts" asp-action="Edit" method="post" class="edit-mode" style="display:none;">
+                                @Html.AntiForgeryToken() <input type="hidden" name="Id" value="@item.Id" />
+                                <input type="hidden" name="BookId" value="@item.BookId" />
+                                <input type="hidden" name="CustomerId" value="@item.CustomerId" />
+
+                                <input type="hidden" name="Quantity" class="hidden-quantity" value="@item.Quantity" />
+
+                                <button type="submit" class="edit-btn">Редактирай</button>
+                            </form>
+                           @*  <button class="edit-btn" asp-controller="Carts" asp-action="Edit" asp-route-id="@item.Id">Редактирай</button> *@
                             <button class="remove-btn" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">Премахни</button>
 
                             <partial name="_DeleteModalPartial" model="item" />

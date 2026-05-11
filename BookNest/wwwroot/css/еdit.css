@@ -113,3 +113,37 @@ div textarea {
         padding-left: 50%;
     }
 }
+
+input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: #bc9b6a; /* Бежово/Златисто */
+    width: 1.15em;
+    height: 1.15em;
+    border: 2px solid #bc9b6a;
+    border-radius: 50%;
+    transform: translateY(0.2em); /* Подравняване с текста */
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+    /* Стилизиране на точката вътре при избор */
+    input[type="radio"]::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em #5d4037; /* Тъмна точка при избор */
+        background-color: CanvasText;
+    }
+
+    /* Когато бутонът е избран - точката се появява */
+    input[type="radio"]:checked::before {
+        transform: scale(1);
+    }

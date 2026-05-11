@@ -1,0 +1,83 @@
+﻿
+.manage-container {
+    padding: 20px;
+    background-color: transparent;
+}
+
+.manage-title {
+    color: #5d4037;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+.profile-card {
+    background-color: #fdfaf5; 
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eaddca;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.custom-label {
+    color: #8d6e63;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.custom-input {
+    background-color: #ffffff;
+    border: 1px solid #eaddca;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #5d4037;
+    transition: all 0.3s ease;
+}
+
+    .custom-input:focus {
+        border-color: #bc9b6a;
+        box-shadow: 0 0 8px rgba(188, 155, 106, 0.2);
+        outline: none;
+    }
+
+    .custom-input:disabled {
+        background-color: #f1f1f1;
+        color: #999;
+    }
+
+
+.btn-save {
+    background-color: #bc9b6a; 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 15px;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+    .btn-save:hover {
+        background-color: #a68a5d;
+        transform: translateY(-2px);
+        color: white;
+    }
+
+    .btn-save:active {
+        transform: translateY(0);
+    }
+
+
+.nav-pills .nav-link.active {
+    background-color: #bc9b6a !important;
+}
+
+.nav-pills .nav-link {
+    color: #5d4037;
+}

@@ -61,12 +61,12 @@ button {
     transition: 0.3s;
 }
 
-.edit-btn {
+.edit-btn, .change-qty-btn {
     background: #3A6EA5;
     color: #fff;
 }
 
-    .edit-btn:hover {
+    .edit-btn, .change-qty-btn:hover {
         background: #6FA1D8;
     }
 
