@@ -5,9 +5,8 @@
 }
 
 <link rel="stylesheet" href="~/css/еdit.css" />
-<h1>Edit</h1>
+<h1>Промени данните за автора</h1>
 
-<h4>Author</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,29 +14,26 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Име</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Biography" class="control-label"></label>
-                <textarea asp-for="Biography" class="form-control"></textarea>
+                <label asp-for="Biography" class="control-label">Биография</label>
+                <textarea asp-for="Biography" class="form-control" style="width: 100%; height: 200px; resize: none;"></textarea>
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
+                <label asp-for="ImageUrl" class="control-label">Снимка(url)</label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Запази" class="btn btn-primary" />
+                <a asp-action="Index" class="back-to-list">Върни се назад</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
