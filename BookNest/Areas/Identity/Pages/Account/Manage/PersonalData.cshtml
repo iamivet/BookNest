@@ -1,0 +1,40 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Лични данни";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<link rel="stylesheet" href="~/css/managePersonalData.css" />
+
+<div class="manage-container">
+    <h3 class="manage-title">@ViewData["Title"]</h3>
+
+    <div class="row profile-card">
+        <div class="col-md-12">
+            <div class="alert-info-custom">
+                <p>Вашият акаунт съдържа лични данни, които сте ни предоставили. Тази страница ви позволява да изтеглите или изтриете тези данни.</p>
+                <p class="warning-text">
+                    <strong>Внимание: Изтриването на тези данни ще премахне за постоянно вашия акаунт и той не може да бъде възстановен!</strong>
+                </p>
+            </div>
+
+            <div class="d-flex flex-column gap-3 mt-4">
+                <form id="download-data" asp-page="DownloadPersonalData" method="post">
+                    <button class="btn-save w-100" type="submit">Изтегли данните (JSON)</button>
+                </form>
+
+                <hr class="hr-custom" />
+
+                <div class="text-center">
+                    <p class="text-muted small">Ако желаете да премахнете акаунта си от системата:</p>
+                    <a id="delete" asp-page="DeletePersonalData" class="btn-delete-custom">Изтрий акаунта</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

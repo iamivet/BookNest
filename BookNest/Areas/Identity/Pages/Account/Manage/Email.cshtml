@@ -1,0 +1,38 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Управление на имейл";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<link rel="stylesheet" href="~/css/manageIndex.css" />
+
+<div class="manage-container">
+    <h3 class="manage-title">@ViewData["Title"]</h3>
+    <partial name="_StatusMessage" for="StatusMessage" />
+
+    <div class="row profile-card">
+        <div class="col-md-12">
+            <form id="email-form" method="post">
+                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="custom-label">Текущ имейл</label>
+                    <input asp-for="Email" class="form-control custom-input" disabled />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Input.NewEmail" class="custom-label">Нов имейл</label>
+                    <input asp-for="Input.NewEmail" class="form-control custom-input" autocomplete="email" aria-required="true" placeholder="Въведете новия си имейл..." />
+                    <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+                </div>
+
+                <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn-save">Запази промените</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
