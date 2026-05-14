@@ -32,8 +32,11 @@
                         <td><img src="@item.Book.CoverImage" alt="@item.Book.Title"></td>
                         <td>@item.Book.Title</td>
                         <td class="book-price" data-price="@item.Book.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)">@item.Book.Price</td>
-                        <td><input type="number" class="quantity-input" value="@item.Quantity" min="1" style="width:50px"></td>
-                        <td class="item-total">@(item.Quantity* item.Book.Price) лв.</td>
+                        <td>
+                            <span class="view-mode quantity-text">@item.Quantity</span>
+                            <input type="number" class="quantity-input" value="@item.Quantity" min="1" style="width:50px;display:none;">
+                        </td>
+                        <td class="item-total">@(item.Quantity* item.Book.Price) €</td>
                         <td class="actions">
                             <button type="button" class="view-mode change-qty-btn" onclick="showElements(this)">Промени бройката</button>
 
@@ -46,8 +49,9 @@
 
                                 <button type="submit" class="edit-btn">Редактирай</button>
                             </form>
-                           @*  <button class="edit-btn" asp-controller="Carts" asp-action="Edit" asp-route-id="@item.Id">Редактирай</button> *@
+                            <button class="remove-btn otkaz" onclick="hideElements(this)" style="display:none;">Отказ</button>
                             <button class="remove-btn" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">Премахни</button>
+                            
 
                             <partial name="_DeleteModalPartial" model="item" />
                         </td>
@@ -64,7 +68,7 @@
                 {
                     totalSum += (item.Quantity * item.Book.Price);
                 }
-                <p><span>Сума:</span><span id="grand-total">@totalSum</span></p>
+                <p><span>Сума:</span><span id="grand-total">@totalSum €</span></p>
                 <button class="btn-2d-checkout" data-bs-toggle="modal" data-bs-target="#checkoutModal">Поръчай</button>
             }
 
@@ -97,3 +101,5 @@ else
         </div>
     </div>
 }
+
+
