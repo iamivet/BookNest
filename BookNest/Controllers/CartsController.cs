@@ -21,7 +21,9 @@ namespace BookNest.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Carts.Include(c => c.Book).Include(c => c.Customer);
+            var userId = _userManager.GetUserId(User);
+
+            var applicationDbContext = _context.Carts.Include(c => c.Book).Include(c => c.Customer).Where(o => o.CustomerId == userId);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -46,11 +48,15 @@ namespace BookNest.Controllers
         }
 
         // GET: Carts/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? BookId)
         {
-            ViewData["BooksList"] = new SelectList(_context.Books, "Id", "Title");
+            //return RedirectToAction("Index", "Books");
+            if (BookId.HasValue)
+            {
+                return RedirectToAction("Details", "Books", new { id = BookId });
+            }
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         // POST: Carts/Create
@@ -85,25 +91,6 @@ namespace BookNest.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BooksList"] = new SelectList(_context.Books, "Id", "Title", cart.BookId);
-            //ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", cart.CustomerId);
-            return View(cart);
-        }
-
-        // GET: Carts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cart = await _context.Carts.FindAsync(id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", cart.BookId);
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", cart.CustomerId);
             return View(cart);
         }
 
@@ -141,26 +128,6 @@ namespace BookNest.Controllers
             }
             ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", cart.BookId);
             ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", cart.CustomerId);
-            return View(cart);
-        }
-
-        // GET: Carts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cart = await _context.Carts
-                .Include(c => c.Book)
-                .Include(c => c.Customer)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-
             return View(cart);
         }
 
