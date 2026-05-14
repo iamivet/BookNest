@@ -1,4 +1,5 @@
 ﻿using BookNest.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,6 +40,7 @@ namespace BookNest.Controllers
         }
 
         // GET: Authors/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +51,7 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Name,Biography,ImageUrl")] Author author, bool isBulgarian)
         {
             if (ModelState.IsValid)
@@ -65,6 +68,7 @@ namespace BookNest.Controllers
         }
 
         // GET: Authors/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,6 +87,7 @@ namespace BookNest.Controllers
         // POST: Authors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Biography,ImageUrl")] Author author)
@@ -116,6 +121,7 @@ namespace BookNest.Controllers
         }
 
         // POST: Authors/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -26,13 +26,15 @@ namespace BookNest.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+
+
         // GET: Orders
         public async Task<IActionResult> CustomerOrders()
         {
             var userId = _userManager.GetUserId(User);
 
             var applicationDbContext = _context.Orders.Include(o => o.Book).Include(o => o.Customer).Where(o => o.CustomerId == userId);
-            return RedirectToAction("Index", "Orders");
+            return View("Index", applicationDbContext);
         }
 
         // GET: Orders/Details/5
@@ -65,8 +67,6 @@ namespace BookNest.Controllers
 
             return View(allItemsInOrder);
 
-
-            //return View(order);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -81,6 +81,20 @@ namespace BookNest.Controllers
             if (cartItems.Count == 0)
             {
                 return RedirectToAction("Index", "Carts");
+            }
+
+            foreach (Cart cartItem in cartItems)
+            {
+                Book? book = await _context.Books
+                .FirstOrDefaultAsync(b => b.Id == cartItem.BookId);
+
+                if (book == null)
+                {
+                    return NotFound();
+                }
+
+                book.Quantity -= cartItem.Quantity;
+                await _context.SaveChangesAsync();
             }
 
             foreach (var item in cartItems)
@@ -101,24 +115,6 @@ namespace BookNest.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", "Orders");
-        }
-
-        // GET: Orders/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", order.BookId);
-            ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", order.CustomerId);
-            return View(order);
         }
 
         // POST: Orders/Edit/5
@@ -155,26 +151,6 @@ namespace BookNest.Controllers
             }
             ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", order.BookId);
             ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", order.CustomerId);
-            return View(order);
-        }
-
-        // GET: Orders/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders
-                .Include(o => o.Book)
-                .Include(o => o.Customer)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
             return View(order);
         }
 

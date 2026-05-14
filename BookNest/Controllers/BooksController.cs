@@ -104,13 +104,20 @@ namespace BookNest.Controllers
             {
                 return NotFound();
             }
+            var authorsList = _context.Authors.Select(a => new
+            {
+                Id = a.Id,
+                Name = a.Name.EndsWith(" BG")
+                     ? a.Name.Substring(0, a.Name.Length - 3)
+                     : a.Name
+            }).ToList();
 
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
+            ViewData["AuthorId"] = new SelectList(authorsList, "Id", "Name", book.AuthorId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
             ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Name", book.PublisherId);
             return View(book);

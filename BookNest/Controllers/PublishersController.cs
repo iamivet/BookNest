@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookNest.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookNest.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookNest.Controllers
 {
@@ -19,6 +20,7 @@ namespace BookNest.Controllers
         }
 
         // GET: Publishers
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Publishers.ToListAsync());
@@ -43,6 +45,7 @@ namespace BookNest.Controllers
         }
 
         // GET: Publishers/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -53,6 +56,7 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Name,City")] Publisher publisher)
         {
             if (ModelState.IsValid)
@@ -65,6 +69,7 @@ namespace BookNest.Controllers
         }
 
         // GET: Publishers/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace BookNest.Controllers
         // POST: Publishers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,City")] Publisher publisher)
@@ -115,25 +121,27 @@ namespace BookNest.Controllers
             return View(publisher);
         }
 
-        // GET: Publishers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: Publishers/Delete/5
+        /// [Authorize(Roles = "Admin")]
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var publisher = await _context.Publishers
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (publisher == null)
-            {
-                return NotFound();
-            }
+        //    var publisher = await _context.Publishers
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (publisher == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(publisher);
-        }
+        //    return View(publisher);
+        //}
 
         // POST: Publishers/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
