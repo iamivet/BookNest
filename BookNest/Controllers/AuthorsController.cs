@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookNest.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookNest.Data;
 
 namespace BookNest.Controllers
 {
@@ -54,11 +49,15 @@ namespace BookNest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Biography,ImageUrl")] Author author)
+        public async Task<IActionResult> Create([Bind("Name,Biography,ImageUrl")] Author author, bool isBulgarian)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(author);
+                    if (isBulgarian)
+                    {
+                        author.Name = author.Name.Trim() + " BG";
+                    }
+                    _context.Add(author);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -113,24 +112,6 @@ namespace BookNest.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(author);
-        }
-
-        // GET: Authors/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var author = await _context.Authors
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (author == null)
-            {
-                return NotFound();
-            }
-
             return View(author);
         }
 
