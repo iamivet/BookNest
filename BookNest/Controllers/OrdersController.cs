@@ -131,8 +131,38 @@ namespace BookNest.Controllers
 
             if (ModelState.IsValid)
             {
+                var oldOrder = await _context.Orders.AsNoTracking().FirstOrDefaultAsync(o => o.Id == id);
+                if (oldOrder == null)
+                {
+                    return NotFound();
+                }
+
+                var book = await _context.Books.FindAsync(order.BookId);
+                if (book == null)
+                {
+                    TempData["ErrorMessage"] = "Избраната книга не съществува.";
+                    TempData["ErrorOrderId"] = order.Id;
+                    return RedirectToAction("Details", new { id = order.CustomerId });
+                }
+
+              
+                if (order.Quantity > book.Quantity)
+                {
+                   
+                    TempData["ErrorMessage"] = $"Няма достатъчно наличност. В момента има останали само {book.Quantity} броя.";
+                    TempData["ErrorOrderId"] = order.Id;
+
+                   
+                    return RedirectToAction("Details", new { id = order.Id });
+                }
+
+
                 try
                 {
+                    int quantityDifference = order.Quantity - oldOrder.Quantity;
+                    book.Quantity -= order.Quantity;
+                    _context.Update(book);
+
                     _context.Update(order);
                     await _context.SaveChangesAsync();
                 }

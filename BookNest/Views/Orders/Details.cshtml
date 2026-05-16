@@ -14,6 +14,7 @@
         <a asp-action="Index" class="btn btn-outline-secondary rounded-pill">
             <i class="fas fa-arrow-left"></i> Обратно към списъка
         </a>
+       
     </div>
 
     <div class="row">
@@ -40,17 +41,18 @@
                     <label class="text-muted d-block small uppercase">Дата на поръчка</label>
                     <span class="fw-bold">@firstOrder.CreatedOn.ToString("dd.MM.yyyy HH:mm")</span>
                 </div>
-
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                    {
                 <div class="alert alert-info border-0 rounded-3" style="background-color: #f0f7ff;">
                     <i class="fas fa-info-circle me-2"></i>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
-                    {
+                    
                         <small>
                             За да промените вашия адрес или телефонен номер, моля влезте в
                             <strong>настройките на профила</strong> си и ги актуализирайте от там.
                         </small>
-                    }
+                    
                 </div>
+                }
             </div>
         </div>
 
@@ -63,30 +65,40 @@
                 <div class="order-items p-4">
                     @foreach (var item in Model)
                     {
-                        <div class="order-footer p-4 bg-light border-top d-flex justify-content-between align-items-center">
-                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете тази поръчка?');">
-                                <button type="submit" class="btn btn-delete-order">
-                                    <i class="fas fa-trash-alt"></i> Премахни книга
-                                </button>
-                            </form>
+                        <div class="order-footer p-4 bg-light border-top d-flex flex-column">
 
-                            <form asp-action="Edit" method="post" class="d-flex align-items-center">
-                                @Html.AntiForgeryToken()
+                            <div class="d-flex justify-content-between align-items-center w-100">
 
-                                <input type="hidden" name="Id" value="@item.Id" />
-                                <input type="hidden" name="BookId" value="@item.BookId" />
-                                <input type="hidden" name="CustomerId" value="@item.CustomerId" />
+                                <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете тази поръчка?');" class="mb-0">
+                                    <button type="submit" class="btn btn-delete-order">
+                                        <i class="fas fa-trash-alt"></i> Премахни книга
+                                    </button>
+                                </form>
 
-                                <input type="hidden" name="CreatedOn" value="@item.CreatedOn.ToString("s")" />
+                                <form asp-action="Edit" method="post" class="d-flex align-items-center mb-0">
+                                    @Html.AntiForgeryToken()
 
-                                <div class="input-group input-group-sm me-2" style="width: 130px;">
-                                    <span class="input-group-text bg-white text-muted">Брой:</span>
-                                    <input type="number" name="Quantity" value="@item.Quantity" min="1" class="form-control quantity-input" />
+                                    <input type="hidden" name="Id" value="@item.Id" />
+                                    <input type="hidden" name="BookId" value="@item.BookId" />
+                                    <input type="hidden" name="CustomerId" value="@item.CustomerId" />
+                                    <input type="hidden" name="CreatedOn" value="@item.CreatedOn.ToString("s")" />
+
+                                    <div class="input-group input-group-sm me-2" style="width: 130px;">
+                                        <span class="input-group-text bg-white text-muted">Брой:</span>
+                                        <input type="number" name="Quantity" value="@item.Quantity" min="1" class="form-control quantity-input" />
+                                    </div>
+                                    <button type="submit" class="btn btn-update-qty btn-sm">
+                                        <i class="fas fa-sync-alt"></i> Обнови
+                                    </button>
+                                </form>
+                            </div>
+
+                            @if (TempData["ErrorMessage"] != null && TempData["ErrorOrderId"] != null && (int)TempData["ErrorOrderId"] == item.Id)
+                            {
+                                <div class="order-error-msg align-self-end">
+                                    <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
                                 </div>
-                                <button type="submit" class="btn btn-update-qty btn-sm">
-                                    <i class="fas fa-sync-alt"></i> Обнови
-                                </button>
-                            </form>
+                            }
                         </div>
                         <div class="order-item d-flex align-items-center mb-4 pb-3 border-bottom-dashed">
                             <div class="book-preview position-relative me-4">
@@ -99,7 +111,7 @@
                                 <p class="fw-bold text-brown">Междинна сума: @((item.Quantity * item.Book.Price).ToString("F2")) лв.</p>
                             </div>
                         </div>
-                     
+
                     }
                 </div>
                 
@@ -155,7 +167,7 @@
 
     .btn-delete-order {
         background-color: transparent;
-        color: #dc3545; /* Червен цвят за внимание */
+        color: #dc3545; 
         border: 1px solid #dc3545;
         padding: 8px 20px;
         border-radius: 50px;
@@ -174,7 +186,7 @@
             margin-right: 8px;
         }
 
-    /* Корекция за футъра, за да подреди елементите в двата края */
+    
     .order-footer {
         display: flex;
         justify-content: space-between;
@@ -196,7 +208,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
 
-    /* Изчистване на input-а */
+    
     .quantity-input {
         border: 1px solid #ced4da;
         text-align: center;
@@ -208,7 +220,7 @@
             box-shadow: 0 0 0 0.2rem rgba(210, 125, 86, 0.25);
         }
 
-    /* Малка корекция за бутона за изтриване, когато е икона */
+   
     .btn-delete-order.btn-sm {
         padding: 5px 12px;
         font-size: 0.85rem;
@@ -216,5 +228,36 @@
 
     .order-item-wrapper:last-child {
         border-bottom: none;
+    }
+
+    .order-error-msg {
+        color: #dc3545;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 8px;
+        text-align: right;
+        max-width: 300px;
+        word-wrap: break-word;
+        /* Плавно появяване */
+        animation: fadeInError 0.3s ease-in-out;
+    }
+
+        .order-error-msg i {
+            margin-right: 4px;
+        }
+
+    @@keyframes fadeInError {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     }
 </style>
