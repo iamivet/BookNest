@@ -189,7 +189,19 @@ namespace BookNest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
             var order = await _context.Orders.FindAsync(id);
+
+            var book = await _context.Books.FindAsync(order.BookId);
+            if (book == null)
+            {
+                TempData["ErrorMessage"] = "Избраната книга не съществува.";
+                TempData["ErrorOrderId"] = order.Id;
+                return RedirectToAction("Details", new { id = order.CustomerId });
+            }
+
+            book.Quantity += order.Quantity;
+
             if (order != null)
             {
                 _context.Orders.Remove(order);
