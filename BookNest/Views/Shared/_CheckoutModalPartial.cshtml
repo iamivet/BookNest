@@ -16,7 +16,7 @@
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <h4>Искате ли да завършите поръчката?</h4>
-                <p>Общо за плащане: <strong>@Model.Sum(i => i.Quantity * i.Book.Price).ToString("F2") лв.</strong></p>
+                <p>Общо за плащане: <strong>@Model.Sum(i => i.Quantity * i.Book.Price).ToString("F2") €</strong></p>
                 <small class="text-muted">С натискането на бутона "Потвърждавам", Вашата поръчка ще бъде изпратена за обработка.</small>
             </div>
             <div class="modal-footer justify-content-center">
