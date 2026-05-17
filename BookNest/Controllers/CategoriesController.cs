@@ -1,12 +1,7 @@
 ﻿using BookNest.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BookNest.Controllers
 {
@@ -119,25 +114,6 @@ namespace BookNest.Controllers
             }
             return View(category);
         }
-
-        //// GET: Categories/Delete/5
-        /// [Authorize(Roles = "Admin")]
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var category = await _context.Categories
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(category);
-        //}
 
         // POST: Categories/Delete/5
         [Authorize(Roles = "Admin")]

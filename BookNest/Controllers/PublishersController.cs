@@ -121,25 +121,6 @@ namespace BookNest.Controllers
             return View(publisher);
         }
 
-        //// GET: Publishers/Delete/5
-        /// [Authorize(Roles = "Admin")]
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var publisher = await _context.Publishers
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (publisher == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(publisher);
-        //}
-
         // POST: Publishers/Delete/5
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
