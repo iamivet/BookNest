@@ -90,7 +90,7 @@ namespace BookNest.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Biography,ImageUrl")] Author author)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Biography,ImageUrl")] Author author, bool isBulgarian)
         {
             if (id != author.Id)
             {
@@ -101,6 +101,22 @@ namespace BookNest.Controllers
             {
                 try
                 {
+
+                    if (isBulgarian)
+                    {
+                        if (!author.Name.EndsWith(" BG"))
+                        {
+                            author.Name = author.Name + " BG";
+                        }
+                    }
+                    else
+                    {
+                        if (author.Name.EndsWith(" BG"))
+                        {
+                           
+                            author.Name = author.Name.Substring(0, author.Name.Length - 3).Trim();
+                        }
+                    }
                     _context.Update(author);
                     await _context.SaveChangesAsync();
                 }

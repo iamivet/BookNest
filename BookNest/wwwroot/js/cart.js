@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const price = parseFloat(row.querySelector('.book-price').getAttribute('data-price'));
             const totalCell = row.querySelector('.item-total');
             if (totalCell) {
-                totalCell.innerText = (price * newValue).toFixed(2) + " лв.";
+                totalCell.innerText = (price * newValue).toFixed(2) + " €";
             }
 
             updateGrandTotal();
@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateGrandTotal() {
         let grandTotal = 0;
         document.querySelectorAll('.item-total').forEach(el => {
-            const val = parseFloat(el.innerText.replace(' лв.', '')) || 0;
+            const val = parseFloat(el.innerText.replace(' €', '')) || 0;
             grandTotal += val;
         });
         const totalDisplay = document.getElementById('grand-total');
         if (totalDisplay) {
-            totalDisplay.innerText = grandTotal.toFixed(2) + " лв.";
+            totalDisplay.innerText = grandTotal.toFixed(2) + " €";
         }
     }
 });

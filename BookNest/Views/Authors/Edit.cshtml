@@ -18,6 +18,14 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <div class="form-group mt-3">
+                <label class="control-label">Тип автор:</label><br />
+                <input type="radio" name="isBulgarian" value="true" id="rbTrue" />
+                <label for="rbTrue">Български автор</label>
+
+                <input type="radio" name="isBulgarian" value="false" id="rbFalse" checked />
+                <label for="rbFalse">Чуждестранен автор</label>
+            </div>
             <div class="form-group">
                 <label asp-for="Biography" class="control-label">Биография</label>
                 <textarea asp-for="Biography" class="form-control" style="width: 100%; height: 200px; resize: none;"></textarea>
